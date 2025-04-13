@@ -50,13 +50,13 @@ export default function Navbar() {
       <TabsWrapper>
         <StyledSection>
           <IconContainer>
+            <StyledIcon component="img" src={InventorySVG} />
+          </IconContainer>
+          <IconContainer>
             <StyledIcon component="img" src={ShakehandSVG} />
           </IconContainer>
           <IconContainer>
             <StyledIcon component="img" src={DiscountSVG} />
-          </IconContainer>
-          <IconContainer>
-            <StyledIcon component="img" src={InventorySVG} />
           </IconContainer>
         </StyledSection>
         <StyledSection>
@@ -119,7 +119,9 @@ export default function Navbar() {
           </IconContainer>
         </StyledSection>
         <StyledSection>
-          <IconContainer>
+          <IconContainer
+            sx={{ backgroundColor: "#EBF4FF", borderRadius: "4px" }}
+          >
             {/* add selected base color later */}
             <StyledIcon component="img" src={IntegrationSVG} />
           </IconContainer>

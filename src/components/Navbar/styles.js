@@ -6,7 +6,7 @@ export const Container = styled(Grid)({
   justifyContent: "start",
   alignItems: "center",
 
-  width: "58px",
+  minWidth: "58px",
   height: "100vh",
   paddingTop: "8px",
   paddingBottom: "8px",
@@ -72,10 +72,8 @@ export const SearchIconBase = styled(Grid)({
 });
 
 export const Logo = styled(Box)({
-  width: "100%",
-  height: "100%",
-  maxWidth: "31.10777473449707px",
-  maxHeight: "24px",
+  width: "40px",
+  height: "40px",
 });
 
 export const SearchIcon = styled(Box)({
@@ -100,7 +98,7 @@ export const StyledSection = styled(Grid)({
   display: "flex",
   flexDirection: "column",
 
-  borderTop: "1px solid #FFFFFF1F",
+  boxShadow: "0 -2px 0 #FFFFFF1F",
   paddingTop: "8px",
 });
 
@@ -110,6 +108,7 @@ export const IconContainer = styled(Grid)({
   maxWidth: "40px",
   maxHeight: "40px",
   padding: "10px",
+
 });
 
 export const StyledIcon = styled(Box)({

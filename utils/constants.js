@@ -1,0 +1,1 @@
+export const pathsName = ["Integration", "E-Invoice", "Settings"];
