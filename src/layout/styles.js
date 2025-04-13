@@ -7,4 +7,4 @@ export const Wrapper = styled(Grid)({
 
     width: "100vw",
     height: "100vh", 
-})
+}) 
