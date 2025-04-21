@@ -39,8 +39,26 @@ import {
   Select,
   Typography,
 } from "@mui/material";
+import { useState } from "react";
 
 export default function Setting() {
+  const displayFunction = (bool, msg) => {
+    console.log(bool ? "Hello world!" : msg);
+  };
+
+  displayFunction(true);
+
+  const [companyName, setCompanyName] = useState("");
+  const [businessActivityDesc, setBusinessActivityDesc] = useState("");
+
+  const handleCompanyNameChange = (event) => {
+    setCompanyName(event.target.value);
+  };
+
+  const handleBusinessActivityDesc = (event) => {
+    setBusinessActivityDesc(event.target.value);
+  };
+
   return (
     <SettingWrapper>
       <SettingHeaderWrapper>
@@ -67,7 +85,10 @@ export default function Setting() {
                 </InputLabelContainer>
                 <StyledPunctuation>:</StyledPunctuation>
               </InputLabelWrapper>
-              <StyledGeneralInput value={"Example Corporation"} />
+              <StyledGeneralInput
+                value={companyName}
+                onChange={handleCompanyNameChange}
+              />
             </FormControlContainer>
 
             <FormControlContainer sx={{ alignItems: "flex-start" }}>
@@ -190,25 +211,7 @@ export default function Setting() {
                 </InputLabelContainer>
                 <StyledPunctuation>:</StyledPunctuation>
               </InputLabelWrapper>
-              <Grid
-                sx={{
-                  display: "flex",
-                  gap: "8px",
-                  flexWrap: "wrap",
-                  alignItems: "flex-start",
-                }}
-              >
-                <StyledContactNumberInput value={0} />
-                <StyledContactNumberInput value={1} />
-                <StyledContactNumberInput value={2} />
-                <StyledContactNumberInput value={3} />
-                <StyledContactNumberInput value={4} />
-                <StyledContactNumberInput value={5} />
-                <StyledContactNumberInput value={6} />
-                <StyledContactNumberInput value={7} />
-                <StyledContactNumberInput value={8} />
-                <StyledContactNumberInput value={9} />
-              </Grid>
+              <StyledGeneralInput value={"examplecorp@email.com"} />
             </FormControlContainer>
           </GeneralInputRowContainer>
 
@@ -223,7 +226,33 @@ export default function Setting() {
                 </InputLabelContainer>
                 <StyledPunctuation>:</StyledPunctuation>
               </InputLabelWrapper>
-              <StyledGeneralInput sx={{ maxWidth: "237px" }} />
+              <StyledGeneralInput />
+            </FormControlContainer>
+
+            <FormControlContainer sx={{opacity: "0"}}>
+              <InputLabelWrapper col={"second"}>
+                <InputLabelContainer>
+                  <StyledInputLabelText>
+                    Bank account number
+                  </StyledInputLabelText>
+                  <StyledTooltip component="img" src={TooltipSVG} />
+                </InputLabelContainer>
+                <StyledPunctuation>:</StyledPunctuation>
+              </InputLabelWrapper>
+              <StyledGeneralInput />
+            </FormControlContainer>
+
+            <FormControlContainer sx={{opacity: "0"}}>
+              <InputLabelWrapper col={"third"}>
+                <InputLabelContainer>
+                  <StyledInputLabelText>
+                    Bank account number
+                  </StyledInputLabelText>
+                  <StyledTooltip component="img" src={TooltipSVG} />
+                </InputLabelContainer>
+                <StyledPunctuation>:</StyledPunctuation>
+              </InputLabelWrapper>
+              <StyledGeneralInput />
             </FormControlContainer>
           </GeneralInputRowContainer>
 
@@ -252,12 +281,16 @@ export default function Setting() {
                 }}
               >
                 <StyledTextarea
-                  value={
-                    "A text area lets users enter long form text which spans over multiple lines."
-                  }
+                  value={businessActivityDesc}
+                  onChange={handleBusinessActivityDesc}
                 />
                 <Grid display={"flex"} justifyContent="flex-end">
-                  <StyledCharacterCount>0 Characters</StyledCharacterCount>
+                  <StyledCharacterCount>
+                    {businessActivityDesc.length > 0
+                      ? businessActivityDesc.length
+                      : "0"}{" "}
+                    Characters
+                  </StyledCharacterCount>
                 </Grid>
               </Grid>
             </FormControlContainer>
@@ -292,7 +325,7 @@ export default function Setting() {
                     </AddressStyledSelect>
                   </AddressStyledFormControl>
                   <AddressStyledFormControl>
-                    <AddressStyledSelect sx={{ height: "32px" }} value={1}>
+                    <AddressStyledSelect value={1}>
                       <MenuItem value={1}>Selangor</MenuItem>
                     </AddressStyledSelect>
                   </AddressStyledFormControl>

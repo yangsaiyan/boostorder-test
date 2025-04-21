@@ -295,7 +295,7 @@ export const IDStyledFormControl = styled(FormControl)({
 
 export const IDStyledSelect = styled(Select)({
   width: "100%",
-  height: "32px",
+  height: "100%",
   borderRadius: "4px",
   border: "1px solid #E0E0E0",
   color: "#757575",

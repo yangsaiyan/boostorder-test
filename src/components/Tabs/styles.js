@@ -24,7 +24,7 @@ export const StyledTabContainer = styled(Grid)(({ selected }) => ({
 
   width: "fit-content",
   height: "40px",
-  borderBottom: selected && "2px solid #FF9500",
+  borderBottom: selected && "2px solid #007AFF",
 }));
 
 export const TextContainer = styled(Grid)({
@@ -39,7 +39,7 @@ export const StyledText = styled(Typography)(({ selected }) => ({
   lineHeight: "18px",
   letterSpacing: 0,
   textAlign: "center",
-  color: selected ? "#FF9500" : "#757575",
+  color: selected ? "#007AFF" : "#757575",
 
   cursor: "pointer",
 }));
