@@ -6,5 +6,9 @@ export const Wrapper = styled(Grid)({
     flexDirection: "row",
 
     width: "100vw",
-    height: "100vh", 
+    height: "100vh",
+
+    "@media(max-width: 650px)":{
+        height: "100%",
+    }
 }) 

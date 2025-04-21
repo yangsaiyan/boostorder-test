@@ -7,7 +7,7 @@ export const Container = styled(Grid)({
   alignItems: "center",
 
   minWidth: "58px",
-  height: "100vh",
+  height: "auto",
   paddingTop: "8px",
   paddingBottom: "8px",
   gap: "8px",

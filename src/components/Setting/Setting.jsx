@@ -38,18 +38,25 @@ import {
   MenuItem,
   Select,
   Typography,
+  useMediaQuery,
 } from "@mui/material";
 import { useState } from "react";
 
 export default function Setting() {
-  const displayFunction = (bool, msg) => {
-    console.log(bool ? "Hello world!" : msg);
-  };
 
-  displayFunction(true);
+  const smallDesktop = useMediaQuery("(max-width: 1320px)");
+  const largeTablet = useMediaQuery("(max-width: 1080px)");
+  const largeMobile = useMediaQuery("(max-width: 650px)");
 
-  const [companyName, setCompanyName] = useState("");
-  const [businessActivityDesc, setBusinessActivityDesc] = useState("");
+  const [companyName, setCompanyName] = useState("Example Corporation");
+  const [businessActivityDesc, setBusinessActivityDesc] = useState(
+    "A text area lets users enter long form text which spans over multiple lines."
+  );
+  const [idType, setIdType] = useState(1);
+  const [country, setCountry] = useState(1);
+  const [state, setState] = useState(1);
+  const [city, setCity] = useState(1);
+  const [postcode, setPostcode] = useState(1);
 
   const handleCompanyNameChange = (event) => {
     setCompanyName(event.target.value);
@@ -57,6 +64,26 @@ export default function Setting() {
 
   const handleBusinessActivityDesc = (event) => {
     setBusinessActivityDesc(event.target.value);
+  };
+
+  const handleIdType = (event) => {
+    setIdType(event.target.value);
+  };
+  
+  const handleCountryChange = (event) => {
+    setCountry(event.target.value);
+  };
+
+  const handleStateChange = (event) => {
+    setState(event.target.value);
+  };
+
+  const handlePostcodeChange = (event) => {
+    setPostcode(event.target.value);
+  };
+
+  const handleCityChange = (event) => {
+    setCity(event.target.value);
   };
 
   return (
@@ -103,9 +130,15 @@ export default function Setting() {
                 <StyledPunctuation>:</StyledPunctuation>
               </InputLabelWrapper>
               <IDStyledFormControl>
-                <IDStyledSelect displayEmpty value={10}>
-                  <MenuItem selected value={10}>
+                <IDStyledSelect displayEmpty onChange={handleIdType} itemSelected={idType !== 1} value={idType}>
+                  <MenuItem value={1}>
                     Select
+                  </MenuItem>
+                  <MenuItem value={2}>
+                    ID1
+                  </MenuItem>
+                  <MenuItem value={3}>
+                    ID2
                   </MenuItem>
                 </IDStyledSelect>
               </IDStyledFormControl>
@@ -123,7 +156,7 @@ export default function Setting() {
                 </InputLabelContainer>
                 <StyledPunctuation>:</StyledPunctuation>
               </InputLabelWrapper>
-              <StyledGeneralInput value={"ID123456789"} />
+              <StyledGeneralInput defaultValue={"ID123456789"} />
             </FormControlContainer>
           </GeneralInputRowContainer>
 
@@ -139,7 +172,7 @@ export default function Setting() {
                 </InputLabelContainer>
                 <StyledPunctuation>:</StyledPunctuation>
               </InputLabelWrapper>
-              <StyledGeneralInput value={"ID0123456789"} />
+              <StyledGeneralInput defaultValue={"ID0123456789"} />
             </FormControlContainer>
 
             <FormControlContainer>
@@ -152,7 +185,7 @@ export default function Setting() {
                 </InputLabelContainer>
                 <StyledPunctuation>:</StyledPunctuation>
               </InputLabelWrapper>
-              <StyledGeneralInput value={"MY782654639057"} />
+              <StyledGeneralInput defaultValue={"MY782654639057"} />
               <CheckboxLabel control={<StyledCheckbox />} label="N/A" />
             </FormControlContainer>
 
@@ -166,7 +199,7 @@ export default function Setting() {
                 </InputLabelContainer>
                 <StyledPunctuation>:</StyledPunctuation>
               </InputLabelWrapper>
-              <StyledGeneralInput value={"T0233307"} />
+              <StyledGeneralInput defaultValue={"T0233307"} />
               <CheckboxLabel control={<StyledCheckbox />} label="N/A" />
             </FormControlContainer>
           </GeneralInputRowContainer>
@@ -183,7 +216,7 @@ export default function Setting() {
                 </InputLabelContainer>
                 <StyledPunctuation>:</StyledPunctuation>
               </InputLabelWrapper>
-              <StyledGeneralInput value={"96094 Pet care services"} />
+              <StyledGeneralInput defaultValue={"96094 Pet care services"} />
             </FormControlContainer>
 
             <FormControlContainer>
@@ -197,7 +230,7 @@ export default function Setting() {
                 </InputLabelContainer>
                 <StyledPunctuation>:</StyledPunctuation>
               </InputLabelWrapper>
-              <StyledGeneralInput value={"examplecorp@email.com"} />
+              <StyledGeneralInput defaultValue={"examplecorp@email.com"} />
             </FormControlContainer>
 
             <FormControlContainer>
@@ -211,7 +244,7 @@ export default function Setting() {
                 </InputLabelContainer>
                 <StyledPunctuation>:</StyledPunctuation>
               </InputLabelWrapper>
-              <StyledGeneralInput value={"examplecorp@email.com"} />
+              <StyledGeneralInput defaultValue={"60123456789"} />
             </FormControlContainer>
           </GeneralInputRowContainer>
 
@@ -229,7 +262,7 @@ export default function Setting() {
               <StyledGeneralInput />
             </FormControlContainer>
 
-            <FormControlContainer sx={{opacity: "0"}}>
+            <FormControlContainer sx={{ display: smallDesktop && "none !important", opacity: "0" }}>
               <InputLabelWrapper col={"second"}>
                 <InputLabelContainer>
                   <StyledInputLabelText>
@@ -242,7 +275,7 @@ export default function Setting() {
               <StyledGeneralInput />
             </FormControlContainer>
 
-            <FormControlContainer sx={{opacity: "0"}}>
+            <FormControlContainer sx={{ display: smallDesktop && "none !important", opacity: "0" }}>
               <InputLabelWrapper col={"third"}>
                 <InputLabelContainer>
                   <StyledInputLabelText>
@@ -257,7 +290,7 @@ export default function Setting() {
           </GeneralInputRowContainer>
 
           <GeneralInputRowContainer
-            sx={{ height: "156px", alignItems: "flex-start" }}
+            sx={{ height: largeMobile ? "fit-content" : "156px", alignItems: "flex-start" }}
           >
             <FormControlContainer sx={{ alignItems: "flex-start" }}>
               <InputLabelWrapper col={"first"}>
@@ -314,29 +347,33 @@ export default function Setting() {
                 flexDirection="column"
                 gap={"8px"}
               >
-                <Grid display={"flex"} gap={"8px"}>
-                  <StyledGeneralInput value={"23, Jalan Perhentian"} />
-                  <StyledGeneralInput value={"Taman Sentosa"} />
+                <Grid display={"flex"} flexDirection={largeTablet && "column"} gap={"8px"}>
+                  <StyledGeneralInput defaultValue={"23, Jalan Perhentian"} />
+                  <StyledGeneralInput defaultValue={"Taman Sentosa"} />
                 </Grid>
-                <Grid display={"flex"} gap={"8px"}>
+                <Grid display={"flex"} flexDirection={largeTablet && "column"} gap={"8px"}>
                   <AddressStyledFormControl>
-                    <AddressStyledSelect value={1}>
+                    <AddressStyledSelect onChange={handleCountryChange} value={country}>
                       <MenuItem value={1}>Malaysia</MenuItem>
+                      <MenuItem value={2}>Singapore</MenuItem>
                     </AddressStyledSelect>
                   </AddressStyledFormControl>
                   <AddressStyledFormControl>
-                    <AddressStyledSelect value={1}>
+                    <AddressStyledSelect onChange={handleStateChange} value={state}>
                       <MenuItem value={1}>Selangor</MenuItem>
+                      <MenuItem value={2}>Perak</MenuItem>
                     </AddressStyledSelect>
                   </AddressStyledFormControl>
                   <AddressStyledFormControl>
-                    <AddressStyledSelect value={1}>
+                    <AddressStyledSelect onChange={handleCityChange} value={city}>
                       <MenuItem value={1}>Petaling Jaya</MenuItem>
+                      <MenuItem value={2}>Kajang</MenuItem>
                     </AddressStyledSelect>
                   </AddressStyledFormControl>
                   <AddressStyledFormControl>
-                    <AddressStyledSelect value={1}>
+                    <AddressStyledSelect onChange={handlePostcodeChange} value={postcode}>
                       <MenuItem value={1}>46350</MenuItem>
+                      <MenuItem value={2}>43300</MenuItem>
                     </AddressStyledSelect>
                   </AddressStyledFormControl>
                 </Grid>

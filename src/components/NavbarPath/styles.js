@@ -9,11 +9,11 @@ import {
 } from "@mui/material";
 import SearchIconSVG from "../../../public/LeadingIcon.svg";
 
-export const NavbarWrapper = styled(Grid)({
+export const NavbarWrapper = styled(Grid)(({ displayProfile }) => ({
   display: "flex",
   flexDirection: "row",
   alignItems: "center",
-  justifyContent: "space-between",
+  justifyContent: displayProfile ? "flex-end" : "space-between",
 
   width: "100%",
   height: "56px",
@@ -22,7 +22,7 @@ export const NavbarWrapper = styled(Grid)({
   paddingRight: "16px",
   backgroundColor: "#FFFFFF",
   borderBottom: "1px solid #E0E0E0",
-});
+}));
 
 export const PathContainer = styled(Grid)({
   display: "flex",
@@ -66,7 +66,7 @@ export const ActionsContainer = styled(Grid)({
 
   width: "100%", 
   maxWidth: "fit-content",
-  height: "100%",
+  height: "56px",
   gap: "16px",
 });
 
@@ -75,7 +75,8 @@ export const LeftWrapper = styled(Grid)({
   flexDirection: "row",
   alignItems: "center",
 
-  width: "auto",
+  width: "100%",
+  maxWidth: "375px",
   height: "100%",
   padding: "8px",
 });
@@ -85,7 +86,7 @@ export const LeftContainer = styled(Grid)({
   flexDirection: "row",
   alignItems: "center",
 
-  width: "fit-content",
+  width: "100%",
   height: "fit-content",
   gap: "12px",
 });
@@ -95,7 +96,8 @@ export const UserDetailsContainer = styled(Grid)({
   flexDirection: "row",
   alignItems: "center",
 
-  width: "fit-content",
+  width: "100%",
+  maxWidth: "fit-content",
   height: "fit-content",
   gap: "4px",
 });
@@ -106,12 +108,15 @@ export const LanguageContainer = styled(Grid)({
   alignItems: "center",
   justifyContent: "center",
 
-  width: "fit-content",
+  width: "100%",
+  maxWidth: "fit-content",
   height: "fit-content",
   padding: "8px 12px 8px 12px",
   borderRadius: "4px",
   border: "1px solid #E0E0E0",
   backgroundColor: "#F5F5F5",
+  gap: "6px",
+  cursor: "pointer"
 });
 
 export const LanguageText = styled(Typography)({
@@ -127,7 +132,7 @@ export const LanguageText = styled(Typography)({
 
 export const Searhbar = styled(Input)({
   height: "40px",
-  minWidth: "323px",
+  width: "100%",
   border: "1px solid #E0E0E0",
   borderRadius: "4px",
   paddingLeft: "16px",
@@ -147,13 +152,16 @@ export const Searhbar = styled(Input)({
 
   "& .MuiInputBase-input": {
     padding: 0,
+    "@media (min-width: 1280px)": {
+      minWidth: "263px",
+    },
   },
 });
 
 export const StyledInputAndorsement = styled(InputAdornment)({
   display: "flex",
 
-  marginRight: "8px",
+  marginRight: "6px",
 });
 
 export const SearchIcon = styled(Box)({
@@ -174,12 +182,14 @@ export const StyledBadge = styled(Badge)({
 export const NotificationIcon = styled(Box)({
   width: "24px",
   height: "24px",
+  cursor: "pointer",
 });
 
 export const UserImage = styled(Box)({
   width: "32px",
   height: "32px",
   borderRadius: "32px",
+  cursor: "pointer",
 });
 
 export const NameContainer = styled(Grid)({
@@ -187,8 +197,7 @@ export const NameContainer = styled(Grid)({
   flexDirection: "column",
   alignItems: "flex-start",
 
-  width: "100%",
-  maxWidth: "83px",
+  minWidth: "83px",
   height: "fit-content",
   gap: "2px",
 });
@@ -220,6 +229,12 @@ export const StyledCompany = styled(Typography)({
 });
 
 export const ArrowDownIcon = styled(Box)({
+  width: "20px",
+  height: "20px",
+  cursor: "pointer",
+});
+
+export const ExpandIcon = styled(Box)({
   width: "20px",
   height: "20px",
 });

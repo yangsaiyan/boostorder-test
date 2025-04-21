@@ -2,10 +2,16 @@ import { Grid, styled, Typography } from "@mui/material";
 
 export const TabsWrapper = styled(Grid)({
   width: "100%",
-  height: "40px",
+  minHeight: "40px",
   gap: "8px",
   backgroundColor: "#FFFFFF",
   borderBottom: "1px solid #E0E0E0",
+  overflowX: "scroll",
+  overflowY: "hidden",
+
+  "::-webkit-scrollbar": {
+    display: "none",
+  },
 });
 
 export const TabsContainer = styled(Grid)({
@@ -40,6 +46,7 @@ export const StyledText = styled(Typography)(({ selected }) => ({
   letterSpacing: 0,
   textAlign: "center",
   color: selected ? "#007AFF" : "#757575",
+  textWrap: "nowrap",
 
   cursor: "pointer",
 }));

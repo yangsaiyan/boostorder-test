@@ -104,6 +104,10 @@ export const InputContainer = styled(Grid)({
   paddingLeft: "16px",
   paddingRight: "16px",
   gap: "8px",
+
+  "@media (max-width: 1320px)": {
+    gap: "24px",
+  }
 });
 
 export const GeneralInputRowContainer = styled(Grid)({
@@ -114,6 +118,11 @@ export const GeneralInputRowContainer = styled(Grid)({
   width: "100%",
   height: "fit-content",
   gap: "24px",
+
+  "@media (max-width: 1320px)": {
+    flexDirection: "column",
+    gap: "24px",
+  }
 });
 
 export const FormControlContainer = styled(Grid)({
@@ -124,6 +133,11 @@ export const FormControlContainer = styled(Grid)({
   width: "100%",
   height: "fit-content",
   gap: "8px",
+
+  "@media (max-width: 650px)":{
+    flexDirection: "column",
+    alignItems: "start",
+  }
 });
 
 export const InputLabelWrapper = styled(Grid)(({col})=>({
@@ -137,6 +151,10 @@ export const InputLabelWrapper = styled(Grid)(({col})=>({
   paddingTop: "2px",
   paddingBottom: "2px",
   gap: "2px",
+
+  "@media (max-width: 1320px)": {
+    minWidth: "208px",
+  }
 }));
 
 export const InputLabelContainer = styled(Grid)({
@@ -293,12 +311,12 @@ export const IDStyledFormControl = styled(FormControl)({
   height: "fit-content",
 });
 
-export const IDStyledSelect = styled(Select)({
+export const IDStyledSelect = styled(Select)(({itemSelected})=>({
   width: "100%",
   height: "100%",
   borderRadius: "4px",
   border: "1px solid #E0E0E0",
-  color: "#757575",
+  color: itemSelected ? "#0A0A0A" : "#757575",
   fontFamily: "Montserrat",
   fontSize: "14px",
   fontWeight: 400,
@@ -321,7 +339,7 @@ export const IDStyledSelect = styled(Select)({
   "& .MuiOutlinedInput-notchedOutline": {
     border: "none",
   }
-});
+}));
 
 export const StyledTextarea = styled("textarea")({
   width: "100%",
